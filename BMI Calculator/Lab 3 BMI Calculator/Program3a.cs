@@ -16,13 +16,18 @@ namespace Lab_3_BMI_Calculator
 
             Console.WriteLine("Enter your height in inches: ");
 
-            dblHeight = Convert.ToInt32(Console.ReadLine());
-
+            while(!double.TryParse(Console.ReadLine(), out dblHeight) || dblHeight <0)
+                {
+                Console.WriteLine("Not Valid.Must be a Positive rational number");
+            }
+            
 
             Console.WriteLine("Enter your weight in pounds: ");
+            while (!double.TryParse(Console.ReadLine(), out dblWeight) || dblWeight < 0)
+                {
+                Console.WriteLine("Not Valid.Must be a Positive rational number");
+            }
             
-            dblWeight = Convert.ToInt32(Console.ReadLine());
-
             dblBMI = (dblWeight * 703) / (dblHeight * dblHeight);
 
             Console.WriteLine("Your BMI is " + dblBMI);
