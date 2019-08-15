@@ -65,10 +65,11 @@ namespace ExercisesWithStrings
             for (int i=0;i<10;i++)
 
             { 
-                Console.WriteLine(BillOfRightsArray2[i]);
+                Console.WriteLine(BillOfRightsArray2[i]+"\n");
               
             }
             FindX(BillOfRightsArray2);
+            GreatestLength(BillOfRightsArray2);
 
             Console.ReadLine();
         }    
@@ -78,16 +79,39 @@ namespace ExercisesWithStrings
         static void FindX(string[] amendments)
         {// find the amendment that contains the word 'controversy'
 
-            for(amendment.Contains("controversy"))
+            for (int i = 0; i < 10; i++)
+
             {
+                
+                if(amendments[i].Contains("controversy"))
+                {
+                    Console.WriteLine("Controversy contained in Amendment " + i);
+                }
 
             }
 
 
 
         }
-        static void StringLength()
+        static void GreatestLength(string[] amendments)
         { // what is the longest amendment?
+            int iLength=0, iLongestAmen=0;
+
+            for (int i = 0; i < 10; i++)
+
+            {
+
+                int CurrentLen = amendments[i].Length;
+
+
+                if (CurrentLen>iLength)
+                {
+                    iLength = CurrentLen;
+                    iLongestAmen = i; 
+                }
+                
+            }
+            Console.WriteLine("Longest amendment is Amendment " + iLongestAmen);
 
         }
 
