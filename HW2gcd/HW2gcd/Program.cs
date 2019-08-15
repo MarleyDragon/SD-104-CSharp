@@ -43,12 +43,13 @@ namespace HW2gcd
 
             
 
-                n3 = nMax % nMin;
+                
 
                 Console.WriteLine("The greatest common divisor between " + nMax + " and " + nMin);
                 do
                 {
-                    if (n3 == 0)
+                n3 = nMax % nMin;
+                if (n3 == 0)
                     {
                         Console.WriteLine("is " + nMax + ".");
                         break;
@@ -66,11 +67,7 @@ namespace HW2gcd
                 }
                 while (n3 >= 0);
 
-
-            
-
-
-
+               
 
             Console.ReadLine();
         }
