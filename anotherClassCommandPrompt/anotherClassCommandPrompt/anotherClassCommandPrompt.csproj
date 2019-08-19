@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BF6ACB59-10D7-4895-8CBC-D2E7EA25B584}</ProjectGuid>
+    <ProjectGuid>{3C3BC738-6DBD-49D7-8F03-8287108E3AA7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MethodLab</RootNamespace>
-    <AssemblyName>MethodLab</AssemblyName>
+    <RootNamespace>anotherClassCommandPrompt</RootNamespace>
+    <AssemblyName>anotherClassCommandPrompt</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Employee.cs" />
+    <Compile Include="CommandPrompt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,7 +9,7 @@ namespace Assgn7GuesstheNumber
     class Program
     {
 
-        private int RandomNumber(int min, int max)
+        private static int RandomNumber(int min, int max)
         {
             Random random = new Random();
             return random.Next(min, max);
@@ -17,14 +17,18 @@ namespace Assgn7GuesstheNumber
 
         static void Main(string[] args)
         {
-            int num;
+            int num; int R = RandomNumber(1, 100);
+
+            int count = 0;
 
             do
             {
+                count++;
                 Console.WriteLine("Hey You! Give me a number! ");
                 int.TryParse(Console.ReadLine(), out num);
                 do
                 {
+
 
                     if (num > 100)
                     {
@@ -42,15 +46,37 @@ namespace Assgn7GuesstheNumber
                         break;
                     }
                 } while (true);
-
-                if (num == )
+                do
                 {
+                    if (num == R)
+                    {
+                        Console.WriteLine("Congrats! You win!!");
+                        break;
+                    }
+                    else if (num > R)
+                    {
+                        Console.WriteLine("Oh no! Your number is too high!");
+                        break;
+                    }
+                    else if (num < R)
+                    {
+                        Console.WriteLine("oh no! Your Number is too low");
+                        break;
 
-                }
+                    }
 
+                } while (true);
 
             } while (true);
+            
+          
+            Console.WriteLine("well done you took " + count + " times to guess the number.");
+            //add number of guesses..?
+
         }
+
+
+        
 
     }
 }

@@ -8,44 +8,45 @@ namespace MethodLab
 {
     class Program
     {
-        class Employee
-        {
-            public string FirstName;
-            public string LastName;
-            public string Dept;
+                
 
-            public void SetNames()
-                {
-                //blah
-                }
-        }
-        static void Main(string[] args)
-        {
-            Employee myEmployee = new Employee();
+          
+            static void Main(string[] args)
+            {
+                Employee myEmployee0 = new Employee("Taylor", "Amazon", "");
 
-            myEmployee.FirstName = "Taylor";
-            myEmployee.LastName = "Amazon";
-            myEmployee.Dept = null;
+                Employee myEmployee1 = new Employee("Kseniia", "Gorbunova", "");
+
+                Employee myEmployee2 = new Employee("Gary", "Mullins", "Outbound");
+
+                Employee myEmployee3 = new Employee("Chris", "Smith", "Inbound");
+
+                Employee myEmployee4 = new Employee("Marley", "Rardin", "ICQA");
+
+                Employee myEmployee5 = new Employee("Killi", "Amazon", "Inbound");
 
 
-            myEmployee.SetNames();
-            AssignDept(myEmployee);
 
-            Console.WriteLine(myEmployee.Dept);
+
+
+
+
+            /*myEmployee.firstName = "Taylor";
+            myEmployee.lastName = "Amazon";
+            myEmployee.dept = null; */
+
+
+            //  myEmployee.SetNames();
+            //AssignDept(myEmployee);
+
+            //Console.WriteLine(myEmployee.dept);
             Console.ReadLine();
 
 
     
-        }
+            }
+    }
 
       
-        static void AssignDept (Employee emp)
-        {
-            if (string.IsNullOrEmpty(emp.Dept))
-            {
-                emp.Dept = "Sales";
-            }
-            
-        }
-    }
 }
+
