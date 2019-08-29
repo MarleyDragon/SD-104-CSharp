@@ -8,65 +8,66 @@ namespace MontyHallHW4
 {
     class Game
     {
-
-        private bool[] door;
-        int randNum;
-        int wins;
-        int losses;
-        int userChoice;
-        int nRand;
-        
-        int discardMe;
-
-
-
-
-
-
-
-        public void PlayGame()
-        { 
+        static void Main(string[] args)
+        {
+            bool[] door;
+            int nSwapped = 0, nStayed = 0;
+            int nPlayer = 0;
+            int nEliminated = 0;
+            bool didSwap;
+            Random rand = new Random();
             
-        door = new bool[3]{false, false, false};
-        Random randNum = new Random();
-        nRand = randNum.Next(1, 3);
-            switch (nRand)
-                {
 
-                case 1:
-                    if (nRand = 1)
+
+            for (int n = 0; n < 10000; n++)
+            {
+                door = new bool[] { false, false, false };
+                //initial car placement and player pic      
+                door[rand.Next( 0, 2 )] = true;
+                nPlayer = n % 3;
+                didSwap = false;
+                //find door to eliminate    
+                for ( int h = 0; h < door.Length; h++ )
+                {
+                    if ( !door[h] && h != nPlayer )
                     {
-                        door[nRand - 1] = door[nRand - 1] == true ? false : true;
+                        nEliminated = h;
                         break;
                     }
-                case 2:
-                    door[nRand - 1] = door[nRand - 1] == true ? false : true;
-                    break;
+                }
+                //player swaps on even  
+                if ( n % 2 == 0 )
+                {
+                    //find other door to switch to  
+                    for ( int swap = 0; swap < door.Length; swap++ )
+                    {
+                        if ( swap != nEliminated && swap != nPlayer )
+                        {
+                            nPlayer = swap;
+                            break;
+                        }
+                    }
+                    didSwap = true;
+                }
+                //see if player won or lost      
+                if ( door[nPlayer] && didSwap )
+                {
+                    nSwapped++;
+                }
+                else if ( door[nPlayer] && !didSwap )
+                {
+                    nStayed++;
+                }
 
-
-                case 3:
-                    door[nRand - 1] = door[nRand - 1] == true ? false : true;
-                    break;
-
+               
+                    
 
             }
-                
-            {
-                
-
-
-            }
-
-
-
-
+            
+               
+            Console.WriteLine("The player won {0} times when swapping and {1} times when not swapping out of 10,000 turns.", nSwapped, nStayed);
+            
+            Console.ReadLine();
         }
-    
-
-
-
-
     }
-
-
 }

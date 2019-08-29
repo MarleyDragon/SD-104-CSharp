@@ -3,49 +3,74 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace MontyHallHW4
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            /*Prove that Ben is correct by writing a program that simulates the Monty Hall Game Show 10,000 times in a For loop. 
-            Simulate random placement of the car behind one of the three doors (hint: use a List or array of type bool so you 
-            can cycle through them).  Do the same for the player's selection.  Be careful, with the Random.Next() function.  
-            It is actually pseudorandom based on the system clock.  If you have the code pick two random numbers back to back, 
-            they will most likely be the same random number.  You could just have the player pick the same door every time or 
-            use the loop count % 3.  You can decide whether to switch based on whether the loop count is odd or even (modulus 2).  
-            Keep track of whether the player won or lost and whether they switched to get that win or loss.  You can display every
-            round if you like but ultimately just show the number of times won when the player switched doors and the number of times
-            they won when they didn't switch.  You should find a distribution where the number of times won when switching is 2 times 
-            more than the number of times won when not switching doors (+/-3333 to +/-1666). */
+
+        Game Monty= new Game();
 
 
+        /*static void Main(string[] args)
+        {            // local variables to hold result and random generator       
+            Random random = new Random();
+            int wins = 0;
+            int losses = 0;
+            // iterate our MontyHall routine 
+            for (int i = 0; i < 10000; i++)
+            {
+                // changeDoor: 
+                // 0 = no, the contestant stays with their initial pick,  
+                // after the offer to switch after              
+                // the disclosure of a "Goat" door              
+                // 1 = yes, the contestant chose to switch doors after      
+                // the disclosure of a "Goat" door              
+                //int changeDoor = 0;               
+                int changeDoor = 1;
+                // calculate whether or not the contestant wins the Car -            
+                // random pickedDoor: 0, 1 or 2 for the door              
+                // the contestant initially picked               
+                // changeDoor: 0 = no, 1 = yes. The contentment decides      
+                // to change their selection after disclosure of a "Goat" door       
+                // random carDoor: 0, 1 or 2 for the door containing the car    
+                // random goatDoorToRemove: 0 = leftmost Goat door,  
+                // 1 = rightmost Goat door. Monty discloses   
+                // one incorrect door, this value indicates which one. 
+                bool result = MontyHallPick(random.Next(3), changeDoor,random.Next(3), random.Next(1));
+                if (result)
+                    wins++;
+                else
+                    losses++;
+            }
+            Console.WriteLine("Wins: {0} Losses: {1}  Total: {2}", 
+                wins, losses, wins + losses);
+            Console.ReadLine();        }
+        public static bool MontyHallPick(int pickedDoor, int changeDoor, int carDoor, int goatDoorToRemove)
+        {            bool win = false;
 
-                Game one = new Game();
-
-                one.PlayGame();
-
-
-            Console.WriteLine(nRand);
-
-
-        }
-
-            
-        
-
-
-
+            // randomly remove one of the *goat* doors,   
+            // but not the "contestants picked" ONE!      
+            int leftGoat = 0;
+            int rightGoat = 2;
+            switch (pickedDoor)
+            {
+                case 0: leftGoat = 1; rightGoat = 2; break;
+                case 1: leftGoat = 0; rightGoat = 2; break;
+                case 2: leftGoat = 0; rightGoat = 1; break;
+            }
+            int keepGoat = goatDoorToRemove == 0 ? rightGoat : leftGoat;
+            // would the contestant win with the switch or the stay?    
+            if (changeDoor == 0)
+            {
+                // not changing the initially picked door 
+                win = carDoor == pickedDoor;
+            }
+            else
+            {
+                // changing picked door to the other door remaining  
+                win = carDoor != keepGoat;
+            }
+            return win;
+        }*/
     }
-
-    
-        
-
-           
-
-        
-    }
-
-
+}
