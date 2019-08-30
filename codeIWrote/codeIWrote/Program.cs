@@ -10,6 +10,13 @@ namespace codeIWrote
     {
         static void Main(string[] args)
         {
+            /*
+             * Creating variables and changing their values
+Using IF statements to control the flow of the application
+Using a SWITCH statement to chose a path based on the value of a variable
+Using a FOR, DO-WHILE or WHILE loops to do anything. Just print the numbers between 1 and 100.
+Creating simple arrays and looping through the array and printing the contents.
+*/
 
             Random rand = new Random();
             int brawn, speed, wit, spirit, finesse, num;
@@ -26,9 +33,17 @@ namespace codeIWrote
                 Console.WriteLine("Your Finesse is " + wit);
                 Console.WriteLine("Your Wit is " + finesse );
                 Console.ReadLine();
+            }
 
+            switch
+                Case Fighter: 
+                {
+                Console.WriteLine("You are a fighter!");
 
             }
+
+
+
         }
     }
 }

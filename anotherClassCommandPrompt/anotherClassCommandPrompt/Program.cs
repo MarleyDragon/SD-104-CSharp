@@ -24,7 +24,8 @@ namespace anotherClassCommandPrompt
                                   "\t1 - Background Color\t2 - Foreground Color\n" +
                                   "\t3 - Screen Text     \t4 - Clear Screen\n" +
                                   "\t5 - Save Screen     \t6 - Reload Screen\n" +
-                                  "Menu Option: ", 7);
+                                  "\t7 - Display\n " +
+                                  "Menu Option: ", 8);
                 switch (menuOption)
                 {
                     case 1:
@@ -35,17 +36,20 @@ namespace anotherClassCommandPrompt
                         break;
                     case 3:
                         int lineNum = GetNumber("Enter Line Number ", windowSize - 1);
-                        string text = GetInput("? ");
+                        string text = GetInput("Text? ");
                         monitor.SetScreenText(lineNum, text);
                         break;
                     case 4:
                         monitor.ClearScreen();
                         break;
                     case 5:
-                        //monitor.SaveScreen( GetInput( "File: " ) );
+                        monitor.SaveScreen( GetInput( "File: " ) );
                         break;
                     case 6:
-                        //monitor.ReloadScreen( GetInput( "File: " ) );
+                        monitor.ReloadScreen( GetInput( "File: " ) );
+                        break;
+                    case 7:
+                        monitor.Display();
                         break;
                     default:
                         monitor.ClearScreen();
@@ -79,29 +83,8 @@ namespace anotherClassCommandPrompt
             return str;
         }
 
-        public void SaveScreen(string fileName)
-        {
-            FileStream stream;
-            StreamWriter textOut = null;
-            try
-            {
-                fileName = "../../../" + fileName;
-                stream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
-                textOut = new StreamWriter(stream);
-                //your code here!!!
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error Creating file: ");
-                Console.WriteLine(ex.ToString());
-                return;
-            }
-            finally
-            {
-                if (textOut != null)
-                    textOut.Close();
-            }
-        }   // of of SaveScreen method
+        
+
     }
 
 }
