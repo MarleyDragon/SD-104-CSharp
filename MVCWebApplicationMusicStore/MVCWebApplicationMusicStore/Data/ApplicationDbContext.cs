@@ -15,5 +15,6 @@ namespace MVCWebApplicationMusicStore.Data
         }
         public DbSet<MVCWebApplicationMusicStore.Models.Music> Music { get; set; }
         public DbSet<MVCWebApplicationMusicStore.Models.Song> Songs { get; set; }
+        public DbSet<MVCWebApplicationMusicStore.Models.Customer> Customer { get; set; }
     }
 }
