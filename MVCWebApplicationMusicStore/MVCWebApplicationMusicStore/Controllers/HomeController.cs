@@ -19,15 +19,19 @@ namespace MVCWebApplicationMusicStore.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View(_context.Songs.Where(m => m.IsFeatured).ToList());
-        }
         public IActionResult Albums()
         {
             return View(_context.Songs.GroupBy(x => x.Album).Select(grp => grp.First()).ToList());
 
         }
+
+       
+
+        public IActionResult Index()
+        {
+            return View(_context.Songs.Where(m => m.IsFeatured).ToList());
+        }
+       
 
         public IActionResult About()
         {

@@ -23,37 +23,44 @@ namespace MVCWebApplicationMusicStore.Controllers
             _context = context;
             _env = env;
         }
-
-        // GET: Customers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Customer.ToListAsync());
         }
+        // GET: Customers
 
-        public async Task<IActionResult> Recommend(string FavoriteGenre)
+        public async Task<IActionResult> Recommend(int? id)
         {
 
+            var customer = await _context.Customer
+                .FirstOrDefaultAsync(m => m.Id == id);
+            ViewBag.Customer = "Recommendations for " +customer.Name + " in " + customer.FavoriteGenre;
 
-            //FindAllSongs
-              //  where Customers.FavoriteGenre= song.Genre. 
 
+            string FavGenre = customer.FavoriteGenre;
+           
 
-
-            if (FavoriteGenre == null)
+            
+            if (FavGenre == null)
             {
                 return NotFound();
             }
-            var recomendSong = from Genre in _context.Songs
-                               where Genre is FavoriteGenre
-                                  select * from _context.Songs;
+            var recomendSong = (from s in _context.Songs
+                                where s.Genre == FavGenre
+                                select s);
             
+
             if (recomendSong == null)
             {
                 return NotFound();
             }
 
-            return View(song);
+            return View(recomendSong);
         }
+
+
+
+       
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
         {

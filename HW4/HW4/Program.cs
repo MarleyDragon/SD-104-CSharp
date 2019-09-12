@@ -10,14 +10,7 @@ namespace HW4
     {
         static void Main(string[] args)
         {
-            /*Passing Yards: 1 point per 25 yards.
-Passing Touchdowns: 4 points.
-Passing Interceptions: -2 points.
-Rushing Yards: 1 point per 10 yards.
-Rushing Touchdowns: 6 points.
-Receptions: 1 points (only if using PPR scoring)
-Receiving Yards: 1 point per 10 yards.
-Receiving Touchdowns: 6 points.*/
+          
             int passingYards, passingTouchdowns, passingInterceptions, rushingYards, rushingTouchdowns, receptions, receivingYards, receivingTouchdowns;
             float totalScore;
 
@@ -52,6 +45,7 @@ Receiving Touchdowns: 6 points.*/
             Console.WriteLine("Total Score is " + totalScore);
             Console.ReadLine();
 
+            
 
 
         }
