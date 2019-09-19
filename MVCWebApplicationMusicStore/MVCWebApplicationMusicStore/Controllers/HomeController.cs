@@ -57,5 +57,14 @@ namespace MVCWebApplicationMusicStore.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        //method to only show is active
+        public IActionResult Songs()
+        {
+            return View(_context.Songs.Where(m => m.IsActive).ToList());
+
+        }
+
+
     }
 }
