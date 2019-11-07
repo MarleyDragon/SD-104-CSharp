@@ -41,10 +41,12 @@ namespace CatDragonInnWebApp.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Full name")]
-            public string FullName { get; set; }
+            [Display(Name = "User name")]
+            public string UserName { get; set; }
 
-            
+          
+
+
             [Required]
             [EmailAddress]
             public string Email { get; set; }
@@ -66,12 +68,11 @@ namespace CatDragonInnWebApp.Areas.Identity.Pages.Account.Manage
             var email = await _userManager.GetEmailAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
-            Username = userName;
+            
 
             Input = new InputModel
             {
-                FullName = user.FullName,
-                
+                UserName = userName,
                 Email = email,
                 PhoneNumber = phoneNumber
             };
@@ -87,18 +88,27 @@ namespace CatDragonInnWebApp.Areas.Identity.Pages.Account.Manage
             {
                 return Page();
             }
+           
 
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            if (Input.FullName != user.UserName)
+            if (Input.UserName != user.UserName)
             {
-                user.UserName = Input.FullName;
+                user.UserName = Input.UserName;
             }
 
-
+            var userName = await _userManager.GetUserNameAsync(user);
+            if (Input.UserName == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+            if (Input.UserName != user.UserName)
+            {
+                user.UserName = Input.UserName;
+            }
             var email = await _userManager.GetEmailAsync(user);
             if (Input.Email != email)
             {

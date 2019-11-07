@@ -1,0 +1,175 @@
+﻿
+@{
+    ViewData["Title"] = "CombatGirls";
+
+
+<h2>Combat Girls</h2>
+<body>
+
+    <!-- Images used to open the lightbox -->
+    <div class="row">
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Berserker.png" onclick="openModal();currentSlide(1)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Healer.png" onclick="openModal();currentSlide(2)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Illusionist.png" onclick="openModal();currentSlide(3)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Knight.png" onclick="openModal();currentSlide(4)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail"  src="~/images/Magic Archer.png" onclick="openModal();currentSlide(5)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Mystic Swordswoman.png" onclick="openModal();currentSlide(6)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Pyromancer.png" onclick="openModal();currentSlide(7)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Rogue.png" onclick="openModal();currentSlide(8)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Samurai.png" onclick="openModal();currentSlide(9)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Scholar.png" onclick="openModal();currentSlide(10)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Sky Sorcerer.png" onclick="openModal();currentSlide(11)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Star Gatherer.png" onclick="openModal();currentSlide(12)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Swashbuckler.png" onclick="openModal();currentSlide(13)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Technomancer.png" onclick="openModal();currentSlide(14)" class="hover-shadow">
+        </div>
+        <div class="column">
+            <img class="img-thumbnail" src="~/images/Water Wizard.png" onclick="openModal();currentSlide(15)" class="hover-shadow">
+        </div>
+    </div>
+
+    <!-- The Modal/Lightbox -->
+    <div id="myModal" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+
+            <div class="mySlides">
+                <div class="numbertext">1 / 15</div>
+                <img src="~/images/Berserker.png" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">2 / 15</div>
+                <img src="~/images/Healer.png" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">3 / 15</div>
+                <img src="~/images/Illusionist.png" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">4 / 15</div>
+                <img src="~/images/Knight.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">5 / 15</div>
+                <img src="~/images/Magic Archer.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">6 / 15</div>
+                <img src="~/images/Mystic Swordswoman.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">7 / 15</div>
+                <img src="~/images/Pyromancer.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">8 / 15</div>
+                <img src="~/images/Rogue.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">9 / 15</div>
+                <img src="~/images/Samurai.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">10 / 15</div>
+                <img src="~/images/Scholar.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">11 / 15</div>
+                <img src="~/images/Sky Sorcerer.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">12 / 15</div>
+                <img src="~/images/Star Gatherer.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">13 / 15</div>
+                <img src="~/images/Swashbuckler.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">14 / 15</div>
+                <img src="~/images/Technomancer.png" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">15 / 15</div>
+                <img src="~/images/Water Wizard.png" style="width:100%">
+            </div>
+
+
+            <!-- Next/previous controls -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <!-- Caption text -->
+            <div class="caption-container">
+                <p id="caption"></p>
+            </div>
+
+            <!-- Thumbnail image controls -->
+            <div class="row">
+                
+                    <img class="demo" src="~/images/Berserker.png" onclick="currentSlide(1)" alt="Berserker">
+               
+                    <img class="demo" src="~/images/Healer.png" onclick="currentSlide(2)" alt="Healer">
+                                
+                    <img class="demo" src="~/images/Illusionist.png" onclick="currentSlide(3)" alt="Illusionist">
+                
+                    <img class="demo" src="~/images/Knight.png" onclick="currentSlide(4)" alt="Knight">
+               
+                    <img class="demo" src="~/images/Magic Archer.png" onclick="currentSlide(5)" alt="Magic Archer">
+                
+                    <img class="demo" src="~/images/Mystic Swordswoman.png" onclick="currentSlide(6)" alt="Mystic Swordswoman">
+                
+                    <img class="demo" src="~/images/Pyromancer.png" onclick="currentSlide(7)" alt="Pyromancer">
+                
+                    <img class="demo" src="~/images/Rogue.png" onclick="currentSlide(8)" alt="Rogue">
+                
+                    <img class="demo" src="~/images/Samurai.png" onclick="currentSlide(9)" alt="Samurai">
+               
+                    <img class="demo" src="~/images/Scholar.png" onclick="currentSlide(10)" alt="Scholar">
+               
+                    <img class="demo" src="~/images/Sky Sorcerer.png" onclick="currentSlide(11)" alt="Sky Sorcerer">
+               
+                    <img class="demo" src="~/images/Star Gatherer.png" onclick="currentSlide(12)" alt="Star Gatherer">
+               
+                    <img class="demo" src="~/images/Swashbuckler.png" onclick="currentSlide(13)" alt="Swash Buckler">
+                
+                    <img class="demo" src="~/images/Technomancer.png" onclick="currentSlide(14)" alt="Technomancer">
+                
+                    <img class="demo" src="~/images/Water Wizard.png" onclick="currentSlide(15)" alt="Water Wizard">
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+}

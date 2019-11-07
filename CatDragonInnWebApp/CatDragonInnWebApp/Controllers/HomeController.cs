@@ -21,6 +21,12 @@ namespace CatDragonInnWebApp.Controllers
 
             return View();
         }
+        public IActionResult CombatGirls()
+        {
+            ViewData["Message"] = "Combat Girls.";
+
+            return View();
+        }
 
         public IActionResult Contact()
         {
