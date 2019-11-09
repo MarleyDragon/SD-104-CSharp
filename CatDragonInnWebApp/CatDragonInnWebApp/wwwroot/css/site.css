@@ -3,20 +3,23 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-image: url(../images/scale.jpg);
-        background-attachment: fixed;
+    background-image: url(../images/reddragoninn.jpg);
+    background-attachment: fixed;
+    background-repeat:no-repeat;
     
-    color: rgba(19, 56, 84, 1);
+    color: #4e9672;
     
 }
-
+.h2{
+    color: burlywood;
+}
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    
+    background-color:rgba(18, 16, 16, 0.42) !important;
     
 }
 
@@ -25,6 +28,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    padding-left: 0px !important;
 }
 /* Carousel */
 .carousel-caption p {

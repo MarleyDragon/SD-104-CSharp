@@ -13,6 +13,9 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="wwwroot\uploads\CustomerImages\" />
+    <Folder Include="wwwroot\uploads\ProductFiles\" />
+    <Folder Include="wwwroot\uploads\ProductImages\" />
   </ItemGroup>
 
 </Project>

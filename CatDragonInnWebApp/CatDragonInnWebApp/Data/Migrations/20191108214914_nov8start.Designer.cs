@@ -4,95 +4,22 @@ using CatDragonInnWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CatDragonInnWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191108214914_nov8start")]
+    partial class nov8start
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("CatDragonInnWebApp.Models.Address", b =>
-                {
-                    b.Property<int>("AddressID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address1");
-
-                    b.Property<string>("Address2");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("SendeeName");
-
-                    b.Property<string>("State");
-
-                    b.Property<int>("UserID");
-
-                    b.Property<int>("Zip");
-
-                    b.HasKey("AddressID");
-
-                    b.ToTable("Address");
-                });
-
-            modelBuilder.Entity("CatDragonInnWebApp.Models.Customer", b =>
-                {
-                    b.Property<int>("CustomerID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("FavGame");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("Image");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<int>("UserID");
-
-                    b.HasKey("CustomerID");
-
-                    b.ToTable("Customer");
-                });
-
-            modelBuilder.Entity("CatDragonInnWebApp.Models.Product", b =>
-                {
-                    b.Property<int>("ProductID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Creator");
-
-                    b.Property<string>("FileUpload");
-
-                    b.Property<string>("Genre");
-
-                    b.Property<string>("Image");
-
-                    b.Property<string>("ProductDescription");
-
-                    b.Property<string>("ProductName");
-
-                    b.Property<string>("Publisher");
-
-                    b.Property<DateTime>("ReleaseDate");
-
-                    b.HasKey("ProductID");
-
-                    b.ToTable("Product");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
