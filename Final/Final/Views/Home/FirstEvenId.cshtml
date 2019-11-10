@@ -1,0 +1,54 @@
+﻿@model Final.Models.Knight
+
+@{
+    ViewData["Title"] = "FirstEvenId";
+}
+
+<h2>FirstEvenId</h2>
+
+<div>
+    <h4>Knight</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Male)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Male)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Female)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Female)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WeaponOfChoice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WeaponOfChoice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
