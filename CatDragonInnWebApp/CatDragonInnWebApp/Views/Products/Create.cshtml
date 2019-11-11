@@ -19,8 +19,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <input type="hidden" asp-for="Image" />
+                <input type="file" name="file" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Genre" class="control-label"></label>
@@ -49,8 +49,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="FileUpload" class="control-label"></label>
-                <input asp-for="FileUpload" class="form-control" />
-                <span asp-validation-for="FileUpload" class="text-danger"></span>
+                <input type="hidden" asp-for="FileUpload" />
+                <input type="file" name="file" class="form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

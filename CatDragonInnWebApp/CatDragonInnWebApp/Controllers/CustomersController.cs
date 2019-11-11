@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CatDragonInnWebApp.Data;
 using CatDragonInnWebApp.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace CatDragonInnWebApp.Controllers
 {
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment _env;
 
-        public CustomersController(ApplicationDbContext context)
+        public CustomersController(ApplicationDbContext context, IHostingEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         // GET: Customers
@@ -54,9 +59,20 @@ namespace CatDragonInnWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerID,UserID,FirstName,LastName,Email,Image,FavGame")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerID,UserID,FirstName,LastName,Email,Image,FavGame")] Customer customer, IFormFile file)
         {
-            if (ModelState.IsValid)
+            if (file != null)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = _env.WebRootPath + "\\uploads\\CustomerImages\\" + fileName;
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                customer.Image = "uploads/CustomerImages/" + fileName;
+            }
+                if (ModelState.IsValid)
             {
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
@@ -86,8 +102,19 @@ namespace CatDragonInnWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerID,UserID,FirstName,LastName,Email,Image,FavGame")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerID,UserID,FirstName,LastName,Email,Image,FavGame")] Customer customer, IFormFile file)
         {
+            if (file != null)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = _env.WebRootPath + "\\uploads\\CustomerImages\\" + fileName;
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                customer.Image = "uploads/CustomerImages/" + fileName;
+            }
             if (id != customer.CustomerID)
             {
                 return NotFound();

@@ -7,16 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CatDragonInnWebApp.Data;
 using CatDragonInnWebApp.Models;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CatDragonInnWebApp.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment _env;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, IHostingEnvironment env)
         {
             _context = context;
+            _env = env;
+
+
         }
 
         // GET: Products
@@ -54,8 +61,30 @@ namespace CatDragonInnWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductID,ProductName,Image,Genre,ProductDescription,ReleaseDate,Creator,Publisher,FileUpload")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductID,ProductName,Image,Genre,ProductDescription,ReleaseDate,Creator,Publisher,FileUpload")] Product product, IFormFile file)
         {
+            if (file != null)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = _env.WebRootPath + "\\uploads\\ProductImages\\" + fileName;
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                product.Image = "uploads/ProductImages/" + fileName;
+            }
+            if (file != null)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = _env.WebRootPath + "\\uploads\\ProductFiles\\" + fileName;
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                product.FileUpload = "uploads/ProductFiles/" + fileName;
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(product);
@@ -86,8 +115,30 @@ namespace CatDragonInnWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductID,ProductName,Image,Genre,ProductDescription,ReleaseDate,Creator,Publisher,FileUpload")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductID,ProductName,Image,Genre,ProductDescription,ReleaseDate,Creator,Publisher,FileUpload")] Product product, IFormFile file)
         {
+            if (file != null)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = _env.WebRootPath + "\\uploads\\ProductImages\\" + fileName;
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                product.Image = "uploads/ProductImages/" + fileName;
+            }
+                if (file != null)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = _env.WebRootPath + "\\uploads\\ProductFiles\\" + fileName;
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    product.FileUpload = "uploads/ProductFiles/" + fileName;
+                }
             if (id != product.ProductID)
             {
                 return NotFound();
